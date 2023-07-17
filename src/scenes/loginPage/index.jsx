@@ -25,7 +25,8 @@ const LoginPage = () => {
         backgroundColor={theme.palette.background.alt}
       >
         <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
-          Welcome to Friendify, the social media platform for friends.!
+          Welcome to Friendify, the ultimate social media platform designed
+          exclusively for friends!
         </Typography>
         <Form />
       </Box>

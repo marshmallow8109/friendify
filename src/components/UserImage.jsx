@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`http://localhost:5000/${image}`}
+        src={`https://friendifyapi.onrender.com/${image}`}
       />
     </Box>
   );
