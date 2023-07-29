@@ -47,6 +47,8 @@ const initialValuesLogin = {
 };
 
 const Form = () => {
+  const [loading, setLoading] = useState(false);
+  const [create, setCreate] = useState(false);
   const [pageType, setPageType] = useState("login");
   const { palette } = useTheme();
   const dispatch = useDispatch();
@@ -56,6 +58,7 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
+    setCreate(true);
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -78,6 +81,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
+    setLoading(true);
     const loggedInResponse = await fetch(
       "https://friendifyapi.onrender.com/login",
       {
@@ -247,7 +251,13 @@ const Form = () => {
                 "&:hover": { color: palette.primary.main },
               }}
             >
-              {isLogin ? "LOGIN" : "REGISTER"}
+              {isLogin
+                ? loading
+                  ? "Loading..."
+                  : "LOGIN"
+                : create
+                ? "Registering..."
+                : "REGISTER"}
             </Button>
             <Typography
               onClick={() => {
